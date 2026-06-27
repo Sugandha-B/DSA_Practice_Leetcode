@@ -1,0 +1,25 @@
+class Solution {
+
+    public int findFloorIndex(int[] nums, int target) {
+        int low = 0, high = nums.length - 1;
+        int ans = -1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (nums[mid] < target) {
+                ans = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+
+    public int searchInsert(int[] nums, int target) {
+        int floorIndex = findFloorIndex(nums, target);
+        return floorIndex + 1;
+    }
+}
